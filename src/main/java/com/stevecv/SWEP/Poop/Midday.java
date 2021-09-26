@@ -8,6 +8,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class Midday {
     public void startMidnightPoop(Plugin plugin) {
@@ -15,9 +16,14 @@ public class Midday {
         new BukkitRunnable() {
             LocalDateTime historyDate = null;
             public void run() {
-                LocalDateTime midDay = LocalDateTime.parse("12:00");
+                LocalTime target = LocalTime.now();
+                boolean targetInZone = (
+                                target.isAfter( LocalTime.parse( "11:00:00" ) )
+                                &&
+                                target.isBefore( LocalTime.parse( "13:00:00" ) )
+                );
 
-                if (LocalDateTime.now().isAfter(midDay) && !alreadyRan[0]) {
+                if (targetInZone && !alreadyRan[0]) {
                     for(World w: Bukkit.getWorlds()) {
                         for(Entity e: w.getEntities()) {
                             if (e.getType() == EntityType.HORSE) {

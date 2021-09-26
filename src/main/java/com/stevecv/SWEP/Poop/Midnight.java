@@ -9,6 +9,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class Midnight {
     public Main main;
@@ -17,13 +18,17 @@ public class Midnight {
     }
 
     public void startMidnightPoop(Plugin plugin) {
+        final boolean[] run = {false};
         new BukkitRunnable() {
-            LocalDateTime historyDate = null;
             public void run() {
+                LocalTime target = LocalTime.now();
+                boolean targetInZone = (
+                        target.isAfter( LocalTime.parse( "23:00:00" ) )
+                                &&
+                                target.isBefore( LocalTime.parse( "1:00:00" ) )
+                );
 
-                LocalDateTime now = LocalDateTime.now();
-
-                if (historyDate == null || now.isAfter(historyDate)) {
+                if (!run[0] && targetInZone) {
                     for(World w: Bukkit.getWorlds()) {
                         for(Entity e: w.getEntities()) {
                             if (e.getType() == EntityType.HORSE) {
@@ -31,8 +36,8 @@ public class Midnight {
                             }
                         }
                     }
+                    run[0] = true;
                 }
-                historyDate = LocalDateTime.now();
             }
         }.runTaskTimer(plugin, 0, 20);
     }
