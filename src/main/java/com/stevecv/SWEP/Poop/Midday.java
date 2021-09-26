@@ -3,6 +3,7 @@ package com.stevecv.SWEP.Poop;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -19,7 +20,9 @@ public class Midday {
                 if (LocalDateTime.now().isAfter(midDay) && !alreadyRan[0]) {
                     for(World w: Bukkit.getWorlds()) {
                         for(Entity e: w.getEntities()) {
-                            new Poop().makePoop(e);
+                            if (e.getType() == EntityType.HORSE) {
+                                new Poop().makePoop(e);
+                            }
                         }
                     }
                     alreadyRan[0] = true;
