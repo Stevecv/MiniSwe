@@ -1,5 +1,6 @@
 C:\SWEP\src\main\java\com\stevecv\SWEP\Horseball\Ball\ThrowBall.java
 C:\SWEP\src\main\java\com\stevecv\SWEP\Methods\GUI.java
+C:\SWEP\src\main\java\com\stevecv\SWEP\Poop\Poop.java
 C:\SWEP\src\main\java\com\stevecv\SWEP\Lunge\Lunge.java
 C:\SWEP\src\main\java\com\stevecv\SWEP\HorseInfo\InfoGUI.java
 C:\SWEP\src\main\java\com\stevecv\SWEP\Data\LookingAt.java
@@ -7,6 +8,7 @@ C:\SWEP\src\main\java\com\stevecv\SWEP\Horseball\Ball\HasBall.java
 C:\SWEP\src\main\java\com\stevecv\SWEP\Grooming\Methods.java
 C:\SWEP\src\main\java\com\stevecv\SWEP\Data\DataHandling.java
 C:\SWEP\src\main\java\com\stevecv\SWEP\Horseball\Ball\HitGround.java
+C:\SWEP\src\main\java\com\stevecv\SWEP\Gaits\OnDismount.java
 C:\SWEP\src\main\java\com\stevecv\SWEP\Levels\OnJump.java
 C:\SWEP\src\main\java\com\stevecv\SWEP\HorseInfo\Traits.java
 C:\SWEP\src\main\java\com\stevecv\SWEP\Horseball\Ball\HurtPlayer.java
@@ -18,6 +20,7 @@ C:\SWEP\src\main\java\com\stevecv\SWEP\Damage\OnDamage.java
 C:\SWEP\src\main\java\com\stevecv\SWEP\FoodWater\Remove.java
 C:\SWEP\src\main\java\com\stevecv\SWEP\Grooming\Clean.java
 C:\SWEP\src\main\java\com\stevecv\SWEP\SpeedJump\Mount.java
+C:\SWEP\src\main\java\com\stevecv\SWEP\Poop\Midnight.java
 C:\SWEP\src\main\java\com\stevecv\SWEP\Methods\Random.java
 C:\SWEP\src\main\java\com\stevecv\SWEP\Grooming\MakeDirty.java
 C:\SWEP\src\main\java\com\stevecv\SWEP\SpeedJump\Updater.java
@@ -33,6 +36,7 @@ C:\SWEP\src\main\java\com\stevecv\SWEP\SpeedJump\LevelUp.java
 C:\SWEP\src\main\java\com\stevecv\SWEP\HorseInfo\NoClick.java
 C:\SWEP\src\main\java\com\stevecv\SWEP\Refusals\Jump.java
 C:\SWEP\src\main\java\com\stevecv\SWEP\FallingOff\FallOff.java
+C:\SWEP\src\main\java\com\stevecv\SWEP\Poop\Midday.java
 C:\SWEP\src\main\java\com\stevecv\SWEP\Grooming\GUI.java
 C:\SWEP\src\main\java\com\stevecv\SWEP\Grooming\OpenGui.java
 C:\SWEP\src\main\java\com\stevecv\SWEP\Horseball\Chat\Sending.java

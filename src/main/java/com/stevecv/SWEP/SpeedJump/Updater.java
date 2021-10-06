@@ -3,11 +3,11 @@ package com.stevecv.SWEP.SpeedJump;
 import com.stevecv.SWEP.Data.DataHandling;
 import com.stevecv.SWEP.HorseInfo.Info;
 import com.stevecv.SWEP.Main;
-import org.bukkit.Bukkit;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.AbstractHorse;
 import org.bukkit.entity.Entity;
-import org.bukkit.persistence.PersistentDataType;
+
+import java.util.Objects;
 
 public class Updater {
     public Main main;
@@ -39,14 +39,18 @@ public class Updater {
         if (gait == null) {
             gait = "Walk";
         }
-        if (gait == "Walk") {
-            speed = setWalkSpeed(speed);
-        } else if (gait == "Trot") {
-            speed = setTrotSpeed(speed);
-        } else if (gait == "Canter") {
-            speed = setCanterSpeed(speed);
+        switch (gait) {
+            case "Walk":
+                speed = setWalkSpeed(speed);
+                break;
+            case "Trot":
+                speed = setTrotSpeed(speed);
+                break;
+            case "Canter":
+                speed = setCanterSpeed(speed);
+                break;
         }
-        horse.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(speed);
+        Objects.requireNonNull(horse.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED)).setBaseValue(speed);
     }
 
     public void updateJump(Entity e) {

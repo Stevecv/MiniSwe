@@ -20,15 +20,20 @@ public class GaitChanges {
         if (currentGait == null) {
             currentGait = "Walk";
         }
-        String nextGait = null;
-        if (currentGait == "Walk") {
-            nextGait = "Trot";
-        } else if (currentGait == "Trot") {
-            nextGait = "Canter";
-        } else if (currentGait == "Canter") {
-            nextGait = "Gallop";
-        } else {
-            nextGait = currentGait;
+        String nextGait;
+        switch (currentGait) {
+            case "Walk":
+                nextGait = "Trot";
+                break;
+            case "Trot":
+                nextGait = "Canter";
+                break;
+            case "Canter":
+                nextGait = "Gallop";
+                break;
+            default:
+                nextGait = currentGait;
+                break;
         }
 
         dh.saveData(e, PersistentDataType.STRING, "gait", nextGait);
@@ -47,14 +52,19 @@ public class GaitChanges {
             currentGait = "Trot";
         }
         String nextGait = null;
-        if (currentGait == "Gallop") {
-            nextGait = "Canter";
-        } else if (currentGait == "Canter") {
-            nextGait = "Trot";
-        } else if (currentGait == "Trot") {
-            nextGait = "Walk";
-        } else {
-            nextGait = currentGait;
+        switch (currentGait) {
+            case "Gallop":
+                nextGait = "Canter";
+                break;
+            case "Canter":
+                nextGait = "Trot";
+                break;
+            case "Trot":
+                nextGait = "Walk";
+                break;
+            default:
+                nextGait = currentGait;
+                break;
         }
 
         dh.saveData(e, PersistentDataType.STRING, "gait", nextGait);

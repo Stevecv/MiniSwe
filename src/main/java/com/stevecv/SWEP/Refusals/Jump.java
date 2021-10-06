@@ -1,5 +1,6 @@
 package com.stevecv.SWEP.Refusals;
 
+import com.stevecv.SWEP.FallingOff.FallOff;
 import com.stevecv.SWEP.Methods.Random;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -18,6 +19,6 @@ public class Jump implements Listener {
         e.setCancelled(true);
         rider.sendActionBar(ChatColor.GREEN + "Refusal");
         if (new Random().randomRound(100.0, 0.0) > 15) { return; }
-        rider.teleport(rider);
+        new FallOff().fallOff(rider.getPlayer());
     }
 }

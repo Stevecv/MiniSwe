@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 
 public class FeedWater implements Listener {
@@ -73,6 +74,7 @@ public class FeedWater implements Listener {
             world.playSound(ent.getLocation(), Sound.ITEM_BUCKET_EMPTY, 4f, 4f);
 
             p.getItemInHand().add(-1);
+            p.getInventory().addItem(new ItemStack(Material.BUCKET));
         }
     }
 }
