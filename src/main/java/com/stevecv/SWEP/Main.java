@@ -20,6 +20,7 @@ import com.stevecv.SWEP.Refusals.Jump;
 import com.stevecv.SWEP.SpeedJump.LevelUp;
 import com.stevecv.SWEP.SpeedJump.Mount;
 import com.stevecv.SWEP.SpeedJump.Updater;
+import com.stevecv.SWEP.Traits.Bites;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -42,7 +43,7 @@ public class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new LevelUp(main), main);
         Bukkit.getPluginManager().registerEvents(new OpenGui(main), main);
         Bukkit.getPluginManager().registerEvents(new NoClick(), main);
-        Bukkit.getPluginManager().registerEvents(new Jump(), main);
+        Bukkit.getPluginManager().registerEvents(new Jump(main), main);
         Bukkit.getPluginManager().registerEvents(new Clean(main), main);
         Bukkit.getPluginManager().registerEvents(new UpDown(main), main);
         Bukkit.getPluginManager().registerEvents(new OnDismount(main), main);
@@ -53,8 +54,10 @@ public class Main extends JavaPlugin {
         new Remove(main).removeFoodWater(main);
         new MakeDirty(main).makeDirty(main);
         new HasBall().snowball(main);
+
         new Midnight(main).startMidnightPoop(main);
         new Midday().startMidnightPoop(main);
+        new Bites(main).startBites(main);
     }
 
     @Override

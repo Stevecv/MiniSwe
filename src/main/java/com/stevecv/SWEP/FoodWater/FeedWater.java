@@ -2,6 +2,7 @@ package com.stevecv.SWEP.FoodWater;
 
 import com.stevecv.SWEP.Data.DataHandling;
 import com.stevecv.SWEP.HorseInfo.Info;
+import com.stevecv.SWEP.HorseInfo.Traits;
 import com.stevecv.SWEP.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -39,7 +40,13 @@ public class FeedWater implements Listener {
         DataHandling dh = new DataHandling(main);
         if (foodLevel <= 4.0) {
             e.setCancelled(true);
-            dh.saveData(ent, PersistentDataType.DOUBLE, "food", foodLevel);
+
+            Traits t = new Traits(main);
+            String traits = t.getTraits(ent);
+
+            if (!traits.contains("Foodie")) {
+                dh.saveData(ent, PersistentDataType.DOUBLE, "food", foodLevel);
+            }
             World world = p.getWorld();
             world.playSound(ent.getLocation(), Sound.ENTITY_HORSE_EAT, 4f, 4f);
 

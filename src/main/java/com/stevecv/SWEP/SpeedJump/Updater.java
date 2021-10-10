@@ -2,6 +2,8 @@ package com.stevecv.SWEP.SpeedJump;
 
 import com.stevecv.SWEP.Data.DataHandling;
 import com.stevecv.SWEP.HorseInfo.Info;
+import com.stevecv.SWEP.HorseInfo.InfoGUI;
+import com.stevecv.SWEP.HorseInfo.Traits;
 import com.stevecv.SWEP.Main;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.AbstractHorse;
@@ -30,7 +32,15 @@ public class Updater {
 
         DataHandling dh = new DataHandling(main);
         double hunger = dh.readDataDouble(e,"hunger", 4.0);
-        double percent = (5-hunger)*20-20;
+
+        Traits t = new Traits(main);
+        String traits = t.getTraits(e);
+        double percent;
+        if (traits.contains("Sporty")) {
+            percent = (2.5 - hunger) * 20 - 20;
+        } else {
+            percent = (5 - hunger) * 20 - 20;
+        }
         speed = speed-(speed*(percent/100));
 
         AbstractHorse horse = (AbstractHorse) e;
@@ -50,6 +60,17 @@ public class Updater {
                 speed = setCanterSpeed(speed);
                 break;
         }
+
+        if (traits.contains("Energetic")) {
+            speed = speed + 0.1;
+        } else if (traits.contains("Lazy")) {
+            speed = speed - 0.1;
+        }
+
+        if (speed <= 0) {
+            speed = 0.01;
+        }
+
         Objects.requireNonNull(horse.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED)).setBaseValue(speed);
     }
 
