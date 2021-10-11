@@ -36,7 +36,6 @@ public class Follow {
                             if (traits.contains("Playful")) {
                                 for (Entity p : e.getNearbyEntities(5, 5, 5)) {
                                     if (p.getType() == EntityType.PLAYER) {
-
                                         Random r = new Random();
                                         if ((int) (Math.random() * (100 - 0)) + 0 < 15) {
                                             Mob mob = (Mob) e;

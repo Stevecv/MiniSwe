@@ -16,6 +16,7 @@ import javax.xml.crypto.Data;
 
 public class Horse implements CommandExecutor {
     public Main main;
+
     public Horse(Main main) {
         this.main = main;
     }
@@ -24,9 +25,8 @@ public class Horse implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         DataHandling dh = new DataHandling(main);
         Player owner = (Player) commandSender;
-
-        if (strings.length >= 0) {
-            if (strings[0].equalsIgnoreCase("claim") && strings.length >= 1) {
+        if (strings[0].equalsIgnoreCase("claim")) {
+            if (strings.length >= 1) {
                 String name = strings[1];
                 Entity horse = owner.getVehicle();
 
@@ -40,8 +40,8 @@ public class Horse implements CommandExecutor {
             } else {
                 owner.sendMessage(ChatColor.RED + "You must name your horse!");
             }
-
-            if (strings[0].equalsIgnoreCase("trust") && strings.length >= 1) {
+        } else if (strings[0].equalsIgnoreCase("trust")) {
+            if (strings.length >= 1) {
                 Entity e = owner.getVehicle();
 
                 String ownerUUID = dh.readDataString(e, "owner");
@@ -63,9 +63,14 @@ public class Horse implements CommandExecutor {
                 } else {
                     owner.sendMessage(ChatColor.RED + "You do not own this horse!");
                 }
+            } else {
+                owner.sendMessage(ChatColor.RED + "You must chose a player to trust!");
             }
+        } else if (strings[0].equalsIgnoreCase("help")) {
+            owner.sendMessage(ChatColor.GREEN + "/h claim <name> " + ChatColor.GRAY + " - " + ChatColor.WHITE + "Claims the horse you're sat on");
+            owner.sendMessage(ChatColor.GREEN + "/h trust <name> " + ChatColor.GRAY + " - " + ChatColor.WHITE + "Trusts the selected player to the horse you're sat on");
         } else {
-            owner.sendMessage(ChatColor.RED + "Choose a sub command; ");
+            owner.sendMessage(ChatColor.RED + "Unknown sub-command! Try /h help");
         }
         return true;
     }
